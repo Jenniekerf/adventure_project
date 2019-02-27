@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require './lib/adventure_project'
+
+AdventureProject::CLI.new.call
