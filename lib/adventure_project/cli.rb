@@ -35,14 +35,14 @@ class AdventureProject::CLI
    when 1 
       maybe_bye
    when 2 
-   puts "list of all 2 options" #including a way to see the list again
+   list_of_trips
    when 3 
-   puts "list of all 3 options" #including a way to see the list again
+   list_of_trips
    when 4
      goodbye
      exit
    else
-   puts "I don't understand that option, try again!" #including a way to see the list again
+   puts "I don't understand that option, try again!" 
     end
    end
  end
@@ -59,6 +59,10 @@ class AdventureProject::CLI
  
  def goodbye
    puts "Thanks for stopping by!"
+ end
+ 
+ def list_of_trips
+   list_of_trips = AdventureProject::Trips.all
  end
  
  
