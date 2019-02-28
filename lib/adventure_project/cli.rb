@@ -11,9 +11,12 @@ class AdventureProject::CLI
    input = gets.strip.downcase
    if input == "y"
      list_options
-   else 
-     exit_site
+   elsif input == "n" 
+     goodbye
      exit
+   else 
+     puts "Y or N please!"
+     welcome
    end
  end
  
@@ -23,10 +26,10 @@ class AdventureProject::CLI
    input = nil
    while input != "exit"
    puts "Tell us how adventurous you are! Enter 1-4
-   1. I like cool sights but I tend to get scared easily. 
+   1. I like to sun bathe and I tend to get scared easily. 
    2. I love adventures but I have bad knees so I can't do anything too crazy. 
    3. Bring it on! I'm a crazy adrenaline junkie!
-   4. Exit site"
+   4. I'm done. Exit site"
    input = gets.strip.to_i
    case input
    when 1 
@@ -55,7 +58,7 @@ class AdventureProject::CLI
  end
  
  def goodbye
-   puts "Have fun on your adventure!"
+   puts "Thanks for stopping by!"
  end
  
  
