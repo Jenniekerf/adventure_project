@@ -1,4 +1,4 @@
-
+require "pry"
 class AdventureProject::CLI 
   
  def call
@@ -26,7 +26,7 @@ class AdventureProject::CLI
    input = nil
    while input != "exit"
    puts "Tell us how adventurous you are! Enter 1-4
-   1. I like to sun bathe and I tend to get scared easily. 
+   1. I like to lie on the beach and I tend to get scared easily. 
    2. I love adventures but I have bad knees so I can't do anything too crazy. 
    3. Bring it on! I'm a crazy adrenaline junkie!
    4. I'm done. Exit site"
@@ -35,11 +35,11 @@ class AdventureProject::CLI
    when 1 
       maybe_bye
    when 2 
-   list_of_trips
+      your_trips
    when 3 
-   list_of_trips
+      your_trips
    when 4
-     goodbye
+      goodbye
      exit
    else
    puts "I don't understand that option, try again!" 
@@ -61,8 +61,8 @@ class AdventureProject::CLI
    puts "Thanks for stopping by!"
  end
  
- def list_of_trips
-   list_of_trips = AdventureProject::Trips.all
+ def your_trips
+   AdventureProject::Trips.all
  end
  
  
