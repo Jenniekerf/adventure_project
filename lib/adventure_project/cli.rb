@@ -12,6 +12,7 @@ class AdventureProject::CLI
    if input == "y"
      list_options
    elsif input == "n" 
+     exit_site
      goodbye
      exit
    else 
@@ -26,18 +27,27 @@ class AdventureProject::CLI
    input = nil
    while input != "exit"
    puts "Tell us how adventurous you are! Enter 1-4
-   1. I like to lie on the beach and I tend to get scared easily. 
-   2. I love adventures but I have bad knees so I can't do anything too crazy. 
+   
+   1. I like to lie on the beach and I tend to get scared easily.
+   
+   2. I love adventures but I have bad knees so I can't do anything too crazy.
+   
    3. Bring it on! I'm a crazy adrenaline junkie!
+   
    4. I'm done. Exit site"
+   
    input = gets.strip.to_i
    case input
    when 1 
       maybe_bye
    when 2 
       your_trips
+      puts "Tell us which trip you would like to know more about!"
+      exit
    when 3 
       your_trips
+      puts "Tell us which trip you would like to know more about!"
+      exit
    when 4
       goodbye
      exit
@@ -62,7 +72,9 @@ class AdventureProject::CLI
  end
  
  def your_trips
-   AdventureProject::Trips.all
+   AdventureProject::Trips.all.each do |trip| 
+   puts "#{trip.title}"
+ end
  end
  
  
