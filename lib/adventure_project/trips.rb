@@ -5,20 +5,32 @@ class AdventureProject::Trips
 
 
  def self.all 
-   puts "Trips we think you would enjoy:"
-    trip_1 = self.new 
-    trip_1.title = "Hike in Torres..."
-    trip_1.description = "blabla"
-    trip_1.url = "https://www.travelchannel.com/interests/outdoors-and-adventure/photos/adventures-for-the-thrill-seeker"
-    trip_2 = self.new 
-    trip_2.title = "Plunge from..."
-    trip_2.description = "blabla"
-    trip_2.url = "https://www.travelchannel.com/interests/outdoors-and-adventure/photos/adventures-for-the-thrill-seeker"
+   
+   self.scraped_trips
+   
+  end
+  
+  def self.scraped_from_site
     
-    [trip_1, trip_2]
+    trips = []
+    
+    trips << self.scrape_trips
+    
+  
+  def self.scrape_trips 
+    doc = Nokogiri::HTML(open("https://travelchannel.com"))
+  end
+    
+    trips
     
   end
   
   
   
 end
+
+
+
+#stuff i scraped:
+#title trip 1 : <span class="o-PhotoGalleryPromo__a-HeadlineText">Hike in Torres del Paine, Chilean Patagonia</span>
+#description trip 1 : <div class="o-PhotoGalleryPromo__a-Description asset-description" 
