@@ -5,29 +5,22 @@ class AdventureProject::Trips
 
 
  def self.all 
-   
    self.scraped_trips
-   
+   end
+  
+  def self.scraped_trips
+    trips = []
+    trips << self.scraped_from_site
+    trips 
   end
   
   def self.scraped_from_site
-    
-    trips = []
-    
-    trips << self.scrape_trips
-    
-  
-  def self.scrape_trips 
     doc = Nokogiri::HTML(open("https://travelchannel.com"))
   end
     
-    trips
     
   end
   
-  
-  
-end
 
 
 
