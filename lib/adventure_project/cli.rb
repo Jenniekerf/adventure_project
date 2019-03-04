@@ -41,12 +41,13 @@ class AdventureProject::CLI
    when 1 
       maybe_bye
    when 2 
+      puts "How about any of these?:"
       your_trips
       puts "Tell us which trip you would like to know more about!"
       exit
    when 3 
-      your_trips
       puts "Tell us which trip you would like to know more about!"
+      your_trips
       exit
    when 4
       goodbye
@@ -73,7 +74,7 @@ class AdventureProject::CLI
  
  def your_trips
    AdventureProject::Trips.all.each do |trip| 
-   puts "#{trip.title}"
+   puts "#{trip}"
  end
  end
  
