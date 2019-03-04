@@ -15,7 +15,8 @@ class AdventureProject::Trips
   end
   
   def self.scraped_from_site
-    doc = Nokogiri::HTML(open("https://travelchannel.com"))
+    doc = Nokogiri::HTML(open("https://www.wanderlust.co.uk/content/11-of-the-best-trips-for-adrenaline-junkies/"))
+    title = doc.css("div.articleBodyContent h3").first.text
   end
     
     
