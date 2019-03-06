@@ -30,8 +30,17 @@ class AdventureProject::Trips
     description << doc.css("div.articleBodyContent").text.split("  ")[99]
     title = doc.css("div.articleBodyContent h3").text.gsub!(/\d+/,"").split(".")
     url = []
-    url << doc.css("div.articleBodyContent strong a").attr("href").value
-    binding.pry
+    url << doc.css('div.articleBodyContent strong a').map { |link| link['href'] }[1]
+    url << doc.css('div.articleBodyContent strong a').map { |link| link['href'] }[5]
+    url << doc.css('div.articleBodyContent strong a').map { |link| link['href'] }[10]
+    url << doc.css('div.articleBodyContent strong a').map { |link| link['href'] }[14]
+    url << doc.css('div.articleBodyContent strong a').map { |link| link['href'] }[19]
+    url << doc.css('div.articleBodyContent strong a').map { |link| link['href'] }[24]
+    url << doc.css('div.articleBodyContent strong a').map { |link| link['href'] }[29]
+    url << doc.css('div.articleBodyContent strong a').map { |link| link['href'] }[33]
+    url << doc.css('div.articleBodyContent strong a').map { |link| link['href'] }[38]
+    url << doc.css('div.articleBodyContent strong a').map { |link| link['href'] }[42]
+    url << doc.css('div.articleBodyContent strong a').map { |link| link['href'] }[47]
   end
 
 
