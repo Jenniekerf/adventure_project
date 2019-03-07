@@ -73,9 +73,10 @@ class AdventureProject::CLI
  end
  
  def your_trips
+   @trips = AdventureProject::Trips.all
    #binding.pry
-   AdventureProject::Trips.all.each do |trip| 
-   puts "#{trip}"
+   @trips.each.with_index(1) do |trip, index|
+     puts "#{index}.#{trip.title}"
  end
  end
  
