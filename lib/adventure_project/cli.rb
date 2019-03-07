@@ -30,9 +30,9 @@ class AdventureProject::CLI
    
    1. I like to lie on the beach and I tend to get scared easily.
    
-   2. I love adventures but I have bad knees so I can't do anything too crazy.
+   2. I like adventures but I'm bringing my kids so nothing too crazy.
    
-   3. Bring it on! I'm a crazy adrenaline junkie!
+   3. I love adventures and I'm up for anything!
    
    4. I'm done. Exit site"
    
@@ -73,6 +73,7 @@ class AdventureProject::CLI
  end
  
  def your_trips
+   #binding.pry
    AdventureProject::Trips.all.each do |trip| 
    puts "#{trip}"
  end
