@@ -25,7 +25,7 @@ class AdventureProject::CLI
  def list_options
    input = nil
    while input != "exit"
-   puts "Tell us how adventurous you are! Enter 1-4
+   puts "Tell us how adventurous you are! Enter 1-3
    
    1. I like to lie on the beach and I tend to get scared easily.
    
@@ -40,19 +40,17 @@ class AdventureProject::CLI
    when 2
      puts "How about any of these?"
      your_trips
-      puts "Tell us which trip you would like to know more about!"
-      input = gets.strip.to_i
-      puts trip_info[input - 1]
-      puts "Would you like to see your other options? Enter Y or N"
-      input = gets.strip.downcase 
-      if input == "y"
-        your_trips
-        elsif input == "n"
-        goodbye
-        exit
-      else 
-        puts "Y or N please!"
-      end
+      #puts trip_info[input - 1]
+      #puts "Would you like to see your other options? Enter Y or N"
+      # input = gets.strip.downcase 
+      # if input == "y"
+      #   your_trips
+      #   elsif input == "n"
+      #   goodbye
+      #   exit
+      # else 
+      #   puts "Y or N please!"
+      # end
       when 3
       goodbye
      exit
@@ -65,9 +63,30 @@ class AdventureProject::CLI
  
  def your_trips
    AdventureProject::Trips.all.each.with_index(1) do |trip, index|
-     puts "#{index}.#{trip.title}"
- end
- end
+    puts "#{index}.#{trip.title}"
+  end
+  puts "Tell us which trip you would like to know more about!"
+       input = gets.strip.to_i
+       puts trip_info[input - 1]
+      puts "Would you like to see your other options? Enter Y or N"
+      input = gets.strip.downcase 
+      if input == "y"
+        your_trips
+        elsif input == "n"
+        goodbye
+        exit
+      else 
+        puts "I'm sorry, I didn't understand that.Enter Y or N please"
+        input = gets.strip.downcase
+        if input == "y"
+          your_trips
+        else
+          goodbye
+          exit
+        end
+      end
+    end
+    
  
  def trip_info
     info = []
