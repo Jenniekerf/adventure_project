@@ -21,6 +21,19 @@ class AdventureProject::CLI
    end
  end
  
+ def your_trips
+   AdventureProject::Trips.all.each.with_index(1) do |trip, index|
+     puts "#{index}.#{trip.title}"
+ end
+ end
+ 
+ def trip_info
+  AdventureProject::Trips.all.each do |trip| 
+    #binding.pry
+    puts "#{trip.description} - #{trip.url}"
+    end
+end
+ 
  
  def list_options
    
@@ -46,8 +59,13 @@ class AdventureProject::CLI
       puts "Tell us which trip you would like to know more about!"
       exit
    when 3 
+     puts "How about any of these?"
+     your_trips
       puts "Tell us which trip you would like to know more about!"
-      your_trips
+      input = gets.strip.to_i
+      #binding.pry
+    trip_info.each do |trip| puts "#{trip.description}"
+  end
       exit
    when 4
       goodbye
@@ -71,14 +89,5 @@ class AdventureProject::CLI
  def goodbye
    puts "Thanks for stopping by!"
  end
- 
- def your_trips
-   @trips = AdventureProject::Trips.all
-   #binding.pry
-   @trips.each.with_index(1) do |trip, index|
-     puts "#{index}.#{trip.title}"
- end
- end
- 
  
  end
