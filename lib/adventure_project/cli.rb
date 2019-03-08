@@ -50,9 +50,16 @@ class AdventureProject::CLI
    AdventureProject::Trips.all.each.with_index(1) do |trip, index|
     puts "#{index}.#{trip.title}"
   end
+    puts ""
     puts "Tell us which trip you would like to know more about!"
     input = gets.strip.to_i
+    if input.between?(1,5)
     puts trip_info[input - 1]
+  else
+    puts "That's not an option. Try again."
+    your_trips
+  end
+    puts ""
     puts "Would you like to see your other options? Enter Y or N"
     input = gets.strip.downcase 
       if input == "y"
@@ -80,8 +87,6 @@ class AdventureProject::CLI
   end
      info
  end
- 
- 
  
  
  def exit_site
