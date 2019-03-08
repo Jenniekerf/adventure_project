@@ -28,11 +28,13 @@ class AdventureProject::CLI
  end
  
  def trip_info
+    info = []
   AdventureProject::Trips.all.each do |trip| 
-    #binding.pry
-    puts "#{trip.description} - #{trip.url}"
-    end
-end
+     #binding.pry
+     info << "#{trip.description} - #{trip.url}"
+     end
+     info
+ end
  
  
  def list_options
@@ -63,9 +65,8 @@ end
      your_trips
       puts "Tell us which trip you would like to know more about!"
       input = gets.strip.to_i
-      #binding.pry
-    trip_info.each do |trip| puts "#{trip.description}"
-  end
+      binding.pry
+      trip_info[1]
       exit
    when 4
       goodbye
