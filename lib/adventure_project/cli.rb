@@ -21,6 +21,48 @@ class AdventureProject::CLI
    end
  end
  
+ 
+ def list_options
+   input = nil
+   while input != "exit"
+   puts "Tell us how adventurous you are! Enter 1-4
+   
+   1. I like to lie on the beach and I tend to get scared easily.
+   
+   2. I love adventures and I'm up for anything!
+   
+   3. I'm done. Exit site"
+   
+   input = gets.strip.to_i
+   case input
+   when 1 
+      maybe_bye
+   when 2
+     puts "How about any of these?"
+     your_trips
+      puts "Tell us which trip you would like to know more about!"
+      input = gets.strip.to_i
+      puts trip_info[input - 1]
+      puts "Would you like to see your other options? Enter Y or N"
+      input = gets.strip.downcase 
+      if input == "y"
+        your_trips
+        elsif input == "n"
+        goodbye
+        exit
+      else 
+        puts "Y or N please!"
+      end
+      when 3
+      goodbye
+     exit
+   else
+   puts "I don't understand that option, try again!" 
+    end
+   end
+ end
+ 
+ 
  def your_trips
    AdventureProject::Trips.all.each.with_index(1) do |trip, index|
      puts "#{index}.#{trip.title}"
@@ -36,46 +78,6 @@ class AdventureProject::CLI
      info
  end
  
- 
- def list_options
-   
-   input = nil
-   while input != "exit"
-   puts "Tell us how adventurous you are! Enter 1-4
-   
-   1. I like to lie on the beach and I tend to get scared easily.
-   
-   2. I like adventures but I'm bringing my kids so nothing too crazy.
-   
-   3. I love adventures and I'm up for anything!
-   
-   4. I'm done. Exit site"
-   
-   input = gets.strip.to_i
-   case input
-   when 1 
-      maybe_bye
-   when 2 
-      puts "How about any of these?:"
-      your_trips
-      puts "Tell us which trip you would like to know more about!"
-      exit
-   when 3 
-     puts "How about any of these?"
-     your_trips
-      puts "Tell us which trip you would like to know more about!"
-      input = gets.strip.to_i
-      binding.pry
-      trip_info[1]
-      exit
-   when 4
-      goodbye
-     exit
-   else
-   puts "I don't understand that option, try again!" 
-    end
-   end
- end
  
  
  
