@@ -23,8 +23,6 @@ class AdventureProject::CLI
  
  
  def list_options
-   input = nil
-   while input != "exit"
    puts "Tell us how adventurous you are! Enter 1-3
    
    1. I like to lie on the beach and I tend to get scared easily.
@@ -34,29 +32,16 @@ class AdventureProject::CLI
    3. I'm done. Exit site"
    
    input = gets.strip.to_i
-   case input
-   when 1 
+     if input == 1
       maybe_bye
-   when 2
-     puts "How about any of these?"
-     your_trips
-      #puts trip_info[input - 1]
-      #puts "Would you like to see your other options? Enter Y or N"
-      # input = gets.strip.downcase 
-      # if input == "y"
-      #   your_trips
-      #   elsif input == "n"
-      #   goodbye
-      #   exit
-      # else 
-      #   puts "Y or N please!"
-      # end
-      when 3
+     elsif input == 2
+      puts "How about one of these bad boys?"
+      your_trips
+     elsif input == 3
       goodbye
-     exit
-   else
-   puts "I don't understand that option, try again!" 
-    end
+      exit
+     else
+      puts "I don't understand that option, try again!" 
    end
  end
  
@@ -65,19 +50,19 @@ class AdventureProject::CLI
    AdventureProject::Trips.all.each.with_index(1) do |trip, index|
     puts "#{index}.#{trip.title}"
   end
-  puts "Tell us which trip you would like to know more about!"
-       input = gets.strip.to_i
-       puts trip_info[input - 1]
-      puts "Would you like to see your other options? Enter Y or N"
-      input = gets.strip.downcase 
+    puts "Tell us which trip you would like to know more about!"
+    input = gets.strip.to_i
+    puts trip_info[input - 1]
+    puts "Would you like to see your other options? Enter Y or N"
+    input = gets.strip.downcase 
       if input == "y"
         your_trips
-        elsif input == "n"
+      elsif input == "n"
         goodbye
         exit
       else 
-        puts "I'm sorry, I didn't understand that.Enter Y or N please"
-        input = gets.strip.downcase
+      puts "I'm sorry, I didn't understand that.Enter Y or N please"
+      input = gets.strip.downcase
         if input == "y"
           your_trips
         else
@@ -90,10 +75,9 @@ class AdventureProject::CLI
  
  def trip_info
     info = []
-  AdventureProject::Trips.all.each do |trip| 
-     #binding.pry
-     info << "#{trip.description} - #{trip.url}"
-     end
+    AdventureProject::Trips.all.each do |trip| 
+    info << "#{trip.description} - #{trip.url}"
+  end
      info
  end
  
