@@ -70,6 +70,10 @@ class AdventureProject::Trips
     trip_5
      
   end
+  
+  #trip_descriptions = [doc.css("div.articleBodyContent").text.split("  ")[1], doc.css("div.articleBodyContent").text.split("  ")[11], doc.css("div.articleBodyContent").text.split("  ")[21], doc.css("div.articleBodyContent").text.split("  ")[31], doc.css("div.articleBodyContent").text.split("  ")[41]]
+  
+  #trip_urls = [doc.css('div.articleBodyContent strong a').map { |link| link['href'] }[1], doc.css('div.articleBodyContent strong a').map { |link| link['href'] }[5], doc.css('div.articleBodyContent strong a').map { |link| link['href'] }[10], doc.css('div.articleBodyContent strong a').map { |link| link['href'] }[14], doc.css('div.articleBodyContent strong a').map { |link| link['href'] }[19]]
     
     
   end
