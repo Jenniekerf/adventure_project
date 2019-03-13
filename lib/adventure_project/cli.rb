@@ -3,7 +3,6 @@ class AdventureProject::CLI
   
  def call
    welcome
-   goodbye
  end
  
  def welcome 
@@ -34,35 +33,47 @@ class AdventureProject::CLI
    input = gets.strip.to_i
      if input == 1
       maybe_bye
+      list_options
      elsif input == 2
-      puts "How about one of these bad boys?"
+      puts "We found these trips for you!"
+      puts ""
       your_trips
      elsif input == 3
       goodbye
       exit
      else
-      puts "I don't understand that option, try again!" 
-      your_trips
+      wrong_input
+      list_options
    end
  end
  
  
  def your_trips
-   AdventureProject::Trips.all.map {|trip| trip.title }.flatten.map.with_index(1) {|t, i| puts "#{i} #{t}" }
+   
+   all_trips = []
+   all_trips << AdventureProject::Trips.all
+   
+   all_trips.map {|trip| trip.title }.flatten.map.with_index(1) {|t, i| puts "#{i} #{t}" }
+   
     puts ""
     puts "Tell us which trip you would like to know more about!"
+    
     input = gets.strip.to_i
-    if input.between?(1,5)
-    puts AdventureProject::Trips.all.map {|trip| trip.description }.flatten[input - 1]
-    puts ""
-    puts "Website for more info:"
-    puts AdventureProject::Trips.all.map {|trip| trip.url }.flatten[input - 1]
-  else
-    puts "That's not an option. Try again."
-    your_trips
+    
+    if input.between?(1,11)
+      puts "Description:"
+      puts ""
+      puts all_trips.map {|trip| trip.description }.flatten[input - 1]
+      puts ""
+      puts "Website for more info:"
+      puts all_trips.map {|trip| trip.url }.flatten[input - 1]
+    else
+      wrong_input
+      your_trips
   end
+  
     puts ""
-    puts "Would you like to see your other options? Enter Y or N"
+    puts "Would you like to see your other options again? Enter Y or N"
     input = gets.strip.downcase 
       if input == "y"
         your_trips
@@ -70,8 +81,9 @@ class AdventureProject::CLI
         goodbye
         exit
       else 
-      puts "I'm sorry, I didn't understand that.Enter Y or N please"
+        wrong_input
       input = gets.strip.downcase
+      
         if input == "y"
           your_trips
         else
@@ -82,19 +94,22 @@ class AdventureProject::CLI
     end
     
  
-
- 
- 
- def exit_site
+def exit_site
   puts "This site is not for you. Have fun on your next all inclusive beach trip!" 
  end
  
  def maybe_bye
    puts "This site might not be for you. Have fun on your next all inclusive beach trip or....face your fears and enter another option!" 
+   puts ""
  end
  
  def goodbye
    puts "Thanks for stopping by!"
+ end
+ 
+ def wrong_input
+   puts "I'm sorry, I didn't understand you. Please try again."
+   puts ""
  end
  
  end
