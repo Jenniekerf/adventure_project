@@ -42,19 +42,21 @@ class AdventureProject::CLI
       exit
      else
       puts "I don't understand that option, try again!" 
+      your_trips
    end
  end
  
  
  def your_trips
-   AdventureProject::Trips.all.each.with_index(1) do |trip, index|
-    puts "#{index}.#{trip.title}"
-  end
+   AdventureProject::Trips.all.map {|trip| trip.title }.flatten.map.with_index(1) {|t, i| puts "#{i} #{t}" }
     puts ""
     puts "Tell us which trip you would like to know more about!"
     input = gets.strip.to_i
     if input.between?(1,5)
-    puts trip_info[input - 1]
+    puts AdventureProject::Trips.all.map {|trip| trip.description }.flatten[input - 1]
+    puts ""
+    puts "Website for more info:"
+    puts AdventureProject::Trips.all.map {|trip| trip.url }.flatten[input - 1]
   else
     puts "That's not an option. Try again."
     your_trips
@@ -80,13 +82,7 @@ class AdventureProject::CLI
     end
     
  
- def trip_info
-    info = []
-    AdventureProject::Trips.all.each do |trip| 
-    info << "#{trip.description} - #{trip.url}"
-  end
-     info
- end
+
  
  
  def exit_site
