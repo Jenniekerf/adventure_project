@@ -1,8 +1,7 @@
 # AdventureProject
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/adventure_project`. To experiment with that code, run `bin/console` for an interactive prompt.
+Adventure_project will give you suggestions and information about adventurous trips to take. Just follow the directions and give input as asked.
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
@@ -21,8 +20,7 @@ Or install it yourself as:
     $ gem install adventure_project
 
 ## Usage
-
-TODO: Write usage instructions here
+ To run the program type 'ruby bin/adventure_project' in your console. 
 
 ## Development
 
